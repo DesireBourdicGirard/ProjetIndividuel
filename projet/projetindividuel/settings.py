@@ -109,9 +109,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-LOGIN_REDIRECT_URL = True
+LOGIN_REDIRECT_URL = 'communitymanager/communautes'
 
-LOGOUT_REDIRECT_URL = True
+LOGOUT_REDIRECT_URL = 'accounts/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
