@@ -1,12 +1,9 @@
-from datetime import timezone
-
 from django.db import models
 from django.contrib.auth.models import User
-
-# Create your models here.
+from datetime import timezone
 
 class Communaute(models.Model):
-    nom = models.CharField(max_length=200)
+    nom = models.CharField(max_length=250)
     abonnes = models.ManyToManyField(User)
 
     class Meta:
@@ -17,7 +14,7 @@ class Communaute(models.Model):
         return self.nom
 
 class Priorite(models.Model):
-    nom = models.CharField(max_length=15)
+    nom = models.CharField(max_length=25)
 
     class Meta:
         verbose_name = "priorite"
@@ -27,8 +24,8 @@ class Priorite(models.Model):
         return self.nom
 
 class Post(models.Model):
-    label = models.CharField(max_length=200)
-    contenu = models.CharField(max_length=2000, blank=True, null=True)
+    titre = models.CharField(max_length=200)
+    description = models.CharField(max_length=2000, blank=True, null=True)
     date_creation = models.DateTimeField(default=timezone.utc)
     communaute = models.ForeignKey('Communaute', on_delete=models.CASCADE)
     priorite = models.ForeignKey('Priorite', on_delete=models.CASCADE)
@@ -38,7 +35,7 @@ class Post(models.Model):
 
     class Meta:
         verbose_name = "post"
-        ordering = ['date_creation']
+        ordering = ['priorite']
 
     def __str__(self):
         return self.label

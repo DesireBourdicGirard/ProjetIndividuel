@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Communautés ISAE-Supaéro{% endblock %}
+
+{% block content %}
+<div class="en_tete">
+<h1 style="font-family: Verdana; color:darkgreen">Bienvenue sur la liste des communautés de l'ISAE-SUPAERO</h1>
+</div>
+
+<div class="liste_communautes">
+
+<table style="font-family: Roboto" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Nom de la communauté</th>
+                <th>Votre status d'abonné</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for communaute in communautes %}
+                <tr>
+                    <td style="color: darkcyan"><a href="{% url 'une_communaute' communaute.id %}">{{ communaute.nom }}<a/></td>
+                    {% if communaute.user_abonne == 1 %}
+                        <td style="color: forestgreen">Abonné</td>
+                        <td><a href="{% url 'toutes_communautes_modifs' communaute.id 2 %}"><button>Se désabonner</button></a></td>
+                    {% else %}
+                        <td style="color: orangered">Non abonné</td>
+                        <td><a href="{% url 'toutes_communautes_modifs' communaute.id 1 %}"><button>S'abonner</button></a></td>
+                    {% endif %}
+                </tr>
+            {% empty %}
+                <td>Aucune communauté dans la base de donnée</td>
+            {% endfor %}
+            </tbody>
+        </table>
+    <br/>
+    <br/>
+</div>
+{% endblock %}

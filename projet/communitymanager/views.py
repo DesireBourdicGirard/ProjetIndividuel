@@ -6,12 +6,20 @@ from django.utils import timezone
 from.models import Communaute, Post
 
 
-# Create your views here.
 @login_required
-def communautes(request):
+def communautes(request, communaute_id=0, action=0):
     """On sélectionne ici l'ensemble des communautés"""
     communautes = Communaute.objects.all()
 
+    """Le marqueur d'action est par défaut à 0, lorsque l'utilisateur n'a rien cliqué sur aucun bouton d'abonnement"""
+    if action == 1:
+        """L'action 1 correspond à une requête d'abonnement de la part de l'utilisateur"""
+        action_com = Communaute.objects.get(id=communaute_id)
+        action_com.abonnes.add(request.user)
+    elif action == 2:
+        """L'action 2 correspond à une requête de désabonnement"""
+        action_com = Communaute.objects.get(id=communaute_id)
+        action_com.abonnes.remove(request.user)
 
     for communaute in communautes:
         abonnement = 0
@@ -19,12 +27,11 @@ def communautes(request):
             abonnement = 1
         communaute.user_abonne = abonnement
 
-    return render(request, 'registration/communities.html', locals())
+    return render(request, 'communities.html', locals())
 
 @login_required
 def communaute(request, communaute_id):
-
-    posts = get_object_or_404(Post, id=communaute_id)
+    posts = Post.objects.filter(id=communaute_id)
     communaute_choisie = Communaute.objects.get(id=communaute_id)
 
-    return render(request, 'registration/community.html', locals())
+    return render(request, 'community.html', locals())
