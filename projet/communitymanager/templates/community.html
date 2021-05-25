@@ -1,10 +1,41 @@
 {% extends "base.html" %}
 
-{% block title %}communaute_choisie.nom endblock %}
-{% block content %}
-<h1 style="font-family: Verdana; color:darkgreen">Bienvenue dans la {{communaute_choisie.nom}} !</h1>
+{% block title %} {{communaute_affichee.nom}}} {% endblock %}
 
-{% for po
+{% block content %}
+<h1 style="font-family: Verdana; color:darkgreen">Bienvenue dans la {{communaute_affichee.nom}} !</h1>
+
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Description</th>
+                <th>Date de publication</th>
+                <th>Auteur</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for post in posts %}
+                <tr>
+                    <td style="color: darkcyan"><a href="{% url 'un_post' post.id %}">{{ post.titre }}</a></td>
+                    <td>{{ post.description }}</td>
+                    <td>{{ post.date_creation }}</td>
+                    <td>{{ post.auteur }}</td>
+                    <td><a><button>Modifier le post</button></a></td>
+                </tr>
+            {% empty %}
+                <p>Aucun post n'a été publié dans cette communauté pour le moment</p>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+<a href="{% url 'ecrire_post' %}">
+    <button>Ecrire un nouveau post au sein de cette communauté</button>
+</a>
+
+</br>
 
 <a href="{% url 'toutes_communautes' %}">
     <button>Retour à la page d'annuaire des Communautés de l'ISAE-Supaéro</button>
