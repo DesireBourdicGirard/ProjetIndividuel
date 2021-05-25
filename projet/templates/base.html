@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr-FR">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="/static/css/style.css">
+</head>
+<title>
+    {% block title %}{% endblock %}
+</title>
+
+<body>
+
+<div class=Accueil>
+    <h1>Le blog des supaériens </h1>
+</div>
+
+<nav>
+    <ul>
+        <li><a href="#">Contact</a></li>
+        <!-- Début du menu déroulant -->
+        <li><a href="/communitymanager/communautes">Communautés</a>
+        <ul>
+            <li><a href="/communitymanager/communautes/2">Communauté ISAE-Supaéro</a></li>
+            <li><a href="/communitymanager/communautes/3">Communauté des informaticiens</a></li>
+            <li><a href="/communitymanager/communautes/4">Communauté des mathématiciens</a></li>
+            <li><a href="/communitymanager/communautes/5">Communauté des physiciens</a></li>
+            <li><a href="/communitymanager/communautes/6">Communauté des thermiciens</a></li>
+        </ul>
+        </li>
+    </ul>
+</nav>
+
+<br><br><br>
+
+
+{% block content %}{% endblock %}
+
+</body>
+</html>

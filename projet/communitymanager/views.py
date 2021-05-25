@@ -3,23 +3,24 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
 
-"""Local imports"""
+#Local imports
 from .models import Communaute, Post, Commentaire
 from .forms import FormComment, FormEcrirePost
 
 
 @login_required
 def communautes(request, communaute_id=0, action=0):
-    """On sélectionne ici l'ensemble des communautés"""
+    """Cette vue affiche l'ensemble des communautés et permet à l'utilisateur de s'abonner et de se désabonner"""
+    #On sélectionne ici l'ensemble des communautés"""
     communautes = Communaute.objects.all()
 
-    """Le marqueur d'action est par défaut à 0, lorsque l'utilisateur n'a rien cliqué sur aucun bouton d'abonnement"""
+    #Le marqueur d'action est par défaut à 0, lorsque l'utilisateur n'a rien cliqué sur aucun bouton d'abonnement
     if action == 1:
-        """L'action 1 correspond à une requête d'abonnement de la part de l'utilisateur"""
+        #L'action 1 correspond à une requête d'abonnement de la part de l'utilisateur
         action_com = Communaute.objects.get(id=communaute_id)
         action_com.abonnes.add(request.user)
     elif action == 2:
-        """L'action 2 correspond à une requête de désabonnement"""
+        #L'action 2 correspond à une requête de désabonnement
         action_com = Communaute.objects.get(id=communaute_id)
         action_com.abonnes.remove(request.user)
 
@@ -33,15 +34,16 @@ def communautes(request, communaute_id=0, action=0):
 
 @login_required
 def communaute(request, communaute_id):
-    posts = Post.objects.filter(id=communaute_id)
+    """Cette vue affiche l'ensemble des posts d'une communauté, et leurs principales caractéristiques"""
+    posts = Post.objects.filter(communaute_id=communaute_id)
     communaute_affichee = Communaute.objects.get(id=communaute_id)
 
     return render(request, 'community.html', locals())
 
 @login_required
 def post(request, post_id):
-    """On affiche ici le contenu du post"""
-    post = get_object_or_404(id=post_id)
+    """On affiche ici le contenu du post et les commentaires associés"""
+    post = get_object_or_404(Post, id=post_id)
 
     # On affiche ici le commentaire associé au post
     commentaires = Commentaire.objects.filter(id=post_id)
@@ -60,7 +62,7 @@ def post(request, post_id):
         commentaire.save()
         sauvegarde = True
 
-    return render(request, 'communitymanager/post.html', locals())
+    return render(request, 'post.html', locals())
 
 
 @login_required
@@ -72,18 +74,17 @@ def ecrire_post(request):
     if request.method == "POST":
         form = FormEcrirePost(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.auteur = request.user
-            post.save()
+            nouveau_post = form.save(commit=False)
+            nouveau_post.auteur = request.user
+            nouveau_post.save()
             sauvegarde = True
-            post_id = post.id
 
-            return redirect('post', post_id)
+            return redirect('post', nouveau_post.id)
 
     else:
         form = FormEcrirePost()
 
-    return render(request, 'communitymanager/ecrire_post.html', locals())
+    return render(request, 'ecrire_post.html', locals())
 
 @login_required
 def post_edit(request, post_id):
@@ -95,9 +96,9 @@ def post_edit(request, post_id):
         post_a_modifier = form.save()
         post_a_modifier.save()
 
-    return render(request, 'communitymanager/post.html', post_a_modifier)
+    return render(request, 'post.html', post_a_modifier)
 
 def posts(request):
     posts = Post.objects.all()
 
-    return render(request, 'communitymanager/posts.html', posts)
+    return render(request, 'posts.html', posts)

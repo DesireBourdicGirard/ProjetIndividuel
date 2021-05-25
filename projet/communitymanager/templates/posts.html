@@ -1,11 +1,15 @@
 {% extends "base.html" %}
 
-{% block title %} {{post.titre}} {% endblock %}
+{% block title %} Tous les posts {% endblock %}
 
 {% block content %}
 
-<div class="contenu_post">
-    <h2>{{post.titre}}</h2>
+<h3>Affichage de tous les posts :</h3>
+
+<p>
+  {% for post in posts %}
+  <div class="contenu_post">
+    <h2><a href="{url 'post' post.id}">{{post.titre}}</h2>
     <p> Publié le : {{post.date_creation}} par {{post.auteur}}, dans la {{post.communaute}}. </p>
     <p> {{post.description}} </p>
 </div>
@@ -31,27 +35,10 @@
     <p>Ce post n'est pas un événenement</p>
     {% endif %}
     <br>
+    <br>
+    <br>
 </div>
+</p>
 
-<div class="commentaires">
-    <h2 style="text-decoration: underline;">Commentaires :</h2>
-    {% for commentaire in commentaires %}
-    <p>Commentaire de {{commentaire.auteur}} posé le {{commentaire.date_publication}} :</p>
-    <p style="color: darkgrey">{{commentaire.texte}}</p>
-    {% empty %}
-    <p>Aucun commentaire n'a été déposé sur ce post : soyez le premier à le commenter !</p>
-    {% endfor %}
-</div>
-
-<div class="row float-right pb-3">
-    <form class="form" method="POST" action="{% url 'un_post' post_id %}">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit"/>
-    </form>
-</div>
 
 {% endblock %}
-
-
-

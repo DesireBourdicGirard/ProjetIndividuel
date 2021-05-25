@@ -11,14 +11,3 @@ class FormEcrirePost(forms.ModelForm):
         model = Post
         exclude = ('auteur',)
 
-    def clean(self):
-        """
-        Validates a new album only if it's not a duplicate
-        """
-        cleaned_data = super(FormEcrirePost, self).clean()
-        evenementiel = cleaned_data['evenementiel']
-        date_evenementiel = cleaned_data['date_evenementiel']
-
-        if evenementiel and not date_evenementiel:
-            raise forms.ValidationError('Un évenement doit avoir une date spécifiée')
-        return cleaned_data

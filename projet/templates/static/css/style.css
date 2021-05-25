@@ -1,0 +1,99 @@
+h1 {
+    color: darkgreen;
+    font-family: "Lucida Bright";
+}
+
+h2 {
+    font-family: Roboto;
+    color: darkblue;
+}
+
+h3 {
+    color: brown;
+    font-family: Roboto;
+}
+
+p {
+    font-family: Verdana;
+    font-size: 15px;
+    color: royalblue;
+}
+
+#navigation {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+#navigation li {
+    display: inline;
+    margin-right: 1px;
+    color: #fff;
+    background: #c00;
+}
+
+#navigation li a {
+    padding: 4px 20px;
+    background: #c00;
+    color: #fff;
+    border: 1px solid #600;
+    font: 1em "Trebuchet MS", Arial, sans-serif;
+    line-height: 1em;
+    text-align: center;
+    text-decoration: none;
+}
+
+#navigation li a:hover, #navigation li a:focus, #navigation li a:active {
+    background: #900;
+    text-decoration: underline;
+}
+
+li {
+    list-style: none !important;
+    color: #FFF;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+nav ul {
+    background-color: #64abfb;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    list-style: none;
+    line-height: 44px;
+    float: left;
+    background-color: #64abfb;
+}
+
+nav ul li a {
+    color: #FFF;
+    padding: 10px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    border-bottom: 3px #FFF solid;
+}
+
+nav ul li ul {
+    display: none;
+}
+
+/* Rend le menu déroulant caché par défaut */
+nav ul li:hover ul { /* Affiche la dropNav au survol de la souris avec la class .drop */
+    z-index: 99999;
+    display: list-item !important;
+    position: absolute;
+    margin-top: 5px;
+    margin-left: -10px;
+}
+
+nav ul li:hover ul li {
+    float: none;
+}
