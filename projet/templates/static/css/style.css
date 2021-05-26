@@ -17,6 +17,7 @@ p {
     font-family: Verdana;
     font-size: 15px;
     color: royalblue;
+    background-color: wheat;
 }
 
 #navigation {
@@ -97,3 +98,14 @@ nav ul li:hover ul { /* Affiche la dropNav au survol de la souris avec la class 
 nav ul li:hover ul li {
     float: none;
 }
+
+div#header{background-color:#F3F2ED;}
+div#container{text-align:left}
+div#extra{background:#CCC8B3;}
+div#footer{background:#BFBD93;}
+div#footer p{margin:0;padding:5px 10px}
+div#container{width:700px;margin:0 auto}
+div#wrapper{float:left;width:100%}
+div#content{margin: 0 150px}
+div#extra{float:left;width:150px;margin-left:-150px}
+div#footer{clear:left;width:100%}

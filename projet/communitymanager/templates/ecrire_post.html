@@ -5,18 +5,16 @@
 {% block content %}
 
 {% if sauvegarde %}
- <p>Ce nouveau post a bien été enregistré.
- {{new_post.id}}</p>
+    <p>Ce nouveau post a bien été enregistré.</p>
 {% endif %}
 
 <div class="FormEcrirePost">
-        <form class="form" method="POST" action="{% url 'ecrire_post' %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit"/>
-        </form>
-    </div>
-
+    <form class="form" method="POST" action="{% url 'ecrire_post' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit"/>
+    </form>
+</div>
 
 
 {% endblock %}

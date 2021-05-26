@@ -11,7 +11,7 @@ class FormComment(forms.ModelForm):
 class FormEcrirePost(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ('auteur', 'date_creation')
+        exclude = ('auteur', 'date_creation',)
 
     def __init__(self, *args, **kwargs):
         super(FormEcrirePost, self).__init__(*args, **kwargs)

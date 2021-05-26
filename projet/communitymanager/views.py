@@ -69,14 +69,22 @@ def post(request, post_id):
 def ecrire_post(request):
     """Ecrire un nouveau post grâce au formulaire de post"""
     print("in view")
-    form = FormEcrirePost(request.POST or None)
-    if form.is_valid():
-        form.save()
-        print("valid")
-        return redirect('communities.html')
+    sauvegarde = False
+    if request.method == "POST":
+        post_form = FormEcrirePost(request.POST or None)
+        print("in post")
+        if post_form.is_valid():
+            post_ecrit = post_form.save(commit=False)
+            post_ecrit.auteur = request.user
+            post_ecrit.save()
+            sauvegarde = True
+            print("valid")
+            post_id = post_ecrit.id
+            return redirect('un_post', post_id)
     else:
-        print("not valid")
-        return render(request, 'ecrire_post.html', locals())
+        post_form = FormEcrirePost()
+        print("in else")
+    return render(request, 'ecrire_post.html', locals())
 
 
 @login_required
