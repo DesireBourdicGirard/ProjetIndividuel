@@ -18,7 +18,7 @@
             <tbody>
             {% for post in posts %}
                 <tr>
-                    <td style="color: darkcyan"><a href="{% url 'un_post' post.id %}">{{ post.titre }}</a></td>
+                    <td><a href="{% url 'un_post' post.id %}">{{ post.titre }}</a></td>
                     <td>{{ post.description }}</td>
                     <td>{{ post.date_creation }}</td>
                     <td>{{ post.auteur }}</td>
@@ -32,7 +32,7 @@
     </div>
 
 <a href="{% url 'ecrire_post' %}">
-    <button>Ecrire un nouveau post au sein de cette communauté</button>
+    <button>Ecrire un nouveau post</button>
 </a>
 
 </br>

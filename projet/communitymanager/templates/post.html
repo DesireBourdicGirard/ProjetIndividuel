@@ -36,10 +36,10 @@
 <div class="commentaires">
     <h2 style="text-decoration: underline;">Commentaires :</h2>
     {% for commentaire in commentaires %}
-    <p>Commentaire de {{commentaire.auteur}} posé le {{commentaire.date_publication}} :</p>
+    <p>Commentaire de {{commentaire.auteur}} posté le {{commentaire.date_publication}} :</p>
     <p style="color: darkgrey">{{commentaire.texte}}</p>
     {% empty %}
-    <p>Aucun commentaire n'a été déposé sur ce post : soyez le premier à le commenter !</p>
+    <p>Aucun commentaire n'a été déposé sous ce post : soyez le premier à le commenter !</p>
     {% endfor %}
 </div>
 

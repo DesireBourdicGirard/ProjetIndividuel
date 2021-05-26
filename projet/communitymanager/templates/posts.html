@@ -6,26 +6,12 @@
 
 <h3>Affichage de tous les posts :</h3>
 
-<p>
-  {% for post in posts %}
-  <div class="contenu_post">
-    <h2><a href="{url 'post' post.id}">{{post.titre}}</h2>
+
+{% for post in posts %}
+<div class="contenu_post">
+    <h2><a href="{% url 'un_post' post.id %}">{{post.titre}}</a></h2>
     <p> Publié le : {{post.date_creation}} par {{post.auteur}}, dans la {{post.communaute}}. </p>
     <p> {{post.description}} </p>
-</div>
-
-<div class="priorités">
-    {% if post.priorite.nom == 'Ecarlate' %}
-    <p style="color: red"> Priorité : {{post.priorite}} </p>
-    {% elif post.priorite.nom == 'Rouge' %}
-    <p style="color: darkred"> Priorité : {{post.priorite}} </p>
-    {% elif post.priorite.nom == 'Orange' %}
-    <p style="color: darkorange"> Priorité : {{post.priorite}} </p>
-    {% elif post.priorite.nom == 'Jaune' %}
-    <p style="color: coral"> Priorité : {{post.priorite}} </p>
-    {% elif post.priorite.nom == 'Blanche' %}
-    <p style="color: mediumspringgreen"> Priorité : {{post.priorite}} </p>
-    {% endif %}
 </div>
 
 <div class="Fonction événement">
@@ -38,7 +24,10 @@
     <br>
     <br>
 </div>
-</p>
+{% empty %}
+<p>Aucun article n'a été publie pour le moment. Soyez patient !</p>
+
+{% endfor %}
 
 
 {% endblock %}

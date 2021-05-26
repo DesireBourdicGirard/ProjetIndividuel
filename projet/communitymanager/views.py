@@ -46,7 +46,7 @@ def post(request, post_id):
     post = get_object_or_404(Post, id=post_id)
 
     # On affiche ici le commentaire associé au post
-    commentaires = Commentaire.objects.filter(id=post_id)
+    commentaires = Commentaire.objects.filter(post__id=post_id)
 
     # Gestion du formulaire d'ajout d'un nouveau commentaire
     sauvegarde = False
@@ -68,23 +68,16 @@ def post(request, post_id):
 @login_required
 def ecrire_post(request):
     """Ecrire un nouveau post grâce au formulaire de post"""
-
-    sauvegarde = False
-
-    if request.method == "POST":
-        form = FormEcrirePost(request.POST)
-        if form.is_valid():
-            nouveau_post = form.save(commit=False)
-            nouveau_post.auteur = request.user
-            nouveau_post.save()
-            sauvegarde = True
-
-            return redirect('post', nouveau_post.id)
-
+    print("in view")
+    form = FormEcrirePost(request.POST or None)
+    if form.is_valid():
+        form.save()
+        print("valid")
+        return redirect('communities.html')
     else:
-        form = FormEcrirePost()
+        print("not valid")
+        return render(request, 'ecrire_post.html', locals())
 
-    return render(request, 'ecrire_post.html', locals())
 
 @login_required
 def post_edit(request, post_id):
@@ -92,7 +85,7 @@ def post_edit(request, post_id):
 
     form = FormEcrirePost(request.POST or None)
     if form.is_valid():
-        post_a_modifier = get_object_or_404(Post, id=post_id)
+        post_a_modifier = get_object_or_404(Post, post__id=post_id)
         post_a_modifier = form.save()
         post_a_modifier.save()
 
@@ -101,4 +94,4 @@ def post_edit(request, post_id):
 def posts(request):
     posts = Post.objects.all()
 
-    return render(request, 'posts.html', posts)
+    return render(request, 'posts.html', locals())

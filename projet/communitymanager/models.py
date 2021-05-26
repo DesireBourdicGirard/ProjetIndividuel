@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 
 class Communaute(models.Model):
-    nom = models.CharField(max_length=250)
+    nom = models.CharField(max_length=150)
     abonnes = models.ManyToManyField(User)
 
     class Meta:
@@ -24,8 +24,8 @@ class Priorite(models.Model):
         return self.nom
 
 class Post(models.Model):
-    titre = models.CharField(max_length=200)
-    description = models.CharField(max_length=2000, blank=True, null=True)
+    titre = models.CharField(max_length=150)
+    description = models.CharField(max_length=1500, blank=True, null=True)
     date_creation = models.DateTimeField(default=timezone.now, verbose_name="Date de création")
     communaute = models.ForeignKey('Communaute', on_delete=models.CASCADE)
     priorite = models.ForeignKey('Priorite', on_delete=models.CASCADE)
