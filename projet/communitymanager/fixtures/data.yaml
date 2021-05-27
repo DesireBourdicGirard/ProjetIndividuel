@@ -1,0 +1,369 @@
+- model: communitymanager.communaute
+  pk: 2
+  fields:
+    nom: Communauté ISAE-Supaéro
+    abonnes:
+    - 1
+    - 2
+- model: communitymanager.communaute
+  pk: 3
+  fields:
+    nom: Communauté des informaticiens
+    abonnes:
+    - 1
+- model: communitymanager.communaute
+  pk: 4
+  fields:
+    nom: Communauté des mathématiciens
+    abonnes:
+    - 1
+- model: communitymanager.communaute
+  pk: 5
+  fields:
+    nom: Communauté des physiciens
+    abonnes:
+    - 1
+- model: communitymanager.communaute
+  pk: 6
+  fields:
+    nom: Communauté des thermiciens
+    abonnes:
+    - 1
+- model: communitymanager.priorite
+  pk: 1
+  fields:
+    nom: Blanche
+- model: communitymanager.priorite
+  pk: 2
+  fields:
+    nom: Jaune
+- model: communitymanager.priorite
+  pk: 3
+  fields:
+    nom: Orange
+- model: communitymanager.priorite
+  pk: 4
+  fields:
+    nom: Rouge
+- model: communitymanager.priorite
+  pk: 5
+  fields:
+    nom: Ecarlate
+- model: communitymanager.post
+  pk: 1
+  fields:
+    titre: Post 1 ISAE
+    description: Description de ce post numéro 1 Bienvenue
+    date_creation: 2021-05-24 16:33:35+00:00
+    communaute: 2
+    priorite: 1
+    evenementiel: true
+    date_evenement: 2021-05-27
+    auteur: 1
+- model: communitymanager.post
+  pk: 2
+  fields:
+    titre: Post 1 ISAE info
+    description: Description de ce post numéro 1 Bienvenue
+    date_creation: 2021-05-24 16:35:36+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 3
+  fields:
+    titre: Post 1 ISAE th
+    description: null
+    date_creation: 2021-05-24 16:37:06+00:00
+    communaute: 6
+    priorite: 1
+    evenementiel: false
+    date_evenement: 2021-05-24
+    auteur: 2
+- model: communitymanager.post
+  pk: 4
+  fields:
+    titre: Post 1 ISAE j
+    description: null
+    date_creation: 2021-05-24 16:38:10+00:00
+    communaute: 4
+    priorite: 2
+    evenementiel: false
+    date_evenement: 2021-05-24
+    auteur: 1
+- model: communitymanager.post
+  pk: 5
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 6
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 7
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 8
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 9
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 10
+  fields:
+    titre: Post 1 ISAE
+    description: nouvel article blabla
+    date_creation: 2021-05-25 21:26:01+00:00
+    communaute: 3
+    priorite: 5
+    evenementiel: true
+    date_evenement: 2021-05-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 11
+  fields:
+    titre: Titre  1
+    description: blablablabla
+    date_creation: 2021-05-26 13:17:52.725383+00:00
+    communaute: 5
+    priorite: 2
+    evenementiel: true
+    date_evenement: 2021-06-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 12
+  fields:
+    titre: Titre  1
+    description: blablablabla
+    date_creation: 2021-05-26 13:18:34.661064+00:00
+    communaute: 5
+    priorite: 2
+    evenementiel: true
+    date_evenement: 2021-06-29
+    auteur: 1
+- model: communitymanager.post
+  pk: 13
+  fields:
+    titre: Titre  1
+    description: blablablabla
+    date_creation: 2021-05-26 13:19:07.381696+00:00
+    communaute: 5
+    priorite: 2
+    evenementiel: true
+    date_evenement: 2021-06-29
+    auteur: 1
+- model: communitymanager.commentaire
+  pk: 1
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:54:47.463068+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 2
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:54:49.851435+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 3
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:54:53.174121+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 4
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:54:54.332354+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 5
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:56:24.842937+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 6
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:58:13.672741+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 7
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:58:31.479864+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 8
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:58:59.842622+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 9
+  fields:
+    texte: alpha
+    date_publication: 2021-05-25 19:59:55.487286+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 10
+  fields:
+    texte: bêta
+    date_publication: 2021-05-25 20:00:11.114267+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 11
+  fields:
+    texte: bêta
+    date_publication: 2021-05-25 20:00:12.575730+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 12
+  fields:
+    texte: bêta
+    date_publication: 2021-05-25 20:00:16.411946+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 13
+  fields:
+    texte: bêta
+    date_publication: 2021-05-25 20:00:18.126874+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 14
+  fields:
+    texte: bêta
+    date_publication: 2021-05-25 20:00:18.996001+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 15
+  fields:
+    texte: beta
+    date_publication: 2021-05-25 20:00:30.859966+00:00
+    auteur: 1
+    post: 2
+- model: communitymanager.commentaire
+  pk: 16
+  fields:
+    texte: beta
+    date_publication: 2021-05-25 20:00:44.774061+00:00
+    auteur: 1
+    post: 3
+- model: communitymanager.commentaire
+  pk: 17
+  fields:
+    texte: beta
+    date_publication: 2021-05-25 20:08:27.382889+00:00
+    auteur: 1
+    post: 3
+- model: communitymanager.commentaire
+  pk: 18
+  fields:
+    texte: kj
+    date_publication: 2021-05-25 21:39:54.499112+00:00
+    auteur: 1
+    post: 6
+- model: communitymanager.commentaire
+  pk: 19
+  fields:
+    texte: alpha
+    date_publication: 2021-05-26 05:11:25.106289+00:00
+    auteur: 1
+    post: 4
+- model: communitymanager.commentaire
+  pk: 20
+  fields:
+    texte: beta
+    date_publication: 2021-05-26 05:11:28.948965+00:00
+    auteur: 1
+    post: 4
+- model: communitymanager.commentaire
+  pk: 21
+  fields:
+    texte: gamma
+    date_publication: 2021-05-26 05:11:35.842586+00:00
+    auteur: 1
+    post: 4
+- model: communitymanager.commentaire
+  pk: 22
+  fields:
+    texte: gamma
+    date_publication: 2021-05-26 05:12:46.135988+00:00
+    auteur: 1
+    post: 4
+- model: communitymanager.commentaire
+  pk: 23
+  fields:
+    texte: blabla
+    date_publication: 2021-05-26 05:18:20.289612+00:00
+    auteur: 1
+    post: 1
+- model: communitymanager.commentaire
+  pk: 24
+  fields:
+    texte: zeta
+    date_publication: 2021-05-26 13:05:29.715325+00:00
+    auteur: 1
+    post: 4
+- model: communitymanager.commentaire
+  pk: 25
+  fields:
+    texte: zeta
+    date_publication: 2021-05-26 13:05:43.616263+00:00
+    auteur: 1
+    post: 3
