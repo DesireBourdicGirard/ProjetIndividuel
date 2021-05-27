@@ -68,36 +68,35 @@ def post(request, post_id):
 @login_required
 def ecrire_post(request):
     """Ecrire un nouveau post grâce au formulaire de post"""
-    print("in view")
     sauvegarde = False
     if request.method == "POST":
+        print("Méthode POST")
         post_form = FormEcrirePost(request.POST or None)
-        print("in post")
         if post_form.is_valid():
+            print("Formulaire complété")
             post_ecrit = post_form.save(commit=False)
             post_ecrit.auteur = request.user
             post_ecrit.save()
             sauvegarde = True
-            print("valid")
             post_id = post_ecrit.id
             return redirect('un_post', post_id)
     else:
         post_form = FormEcrirePost()
-        print("in else")
+        print("Création formulaire")
     return render(request, 'ecrire_post.html', locals())
 
 
 @login_required
-def post_edit(request, post_id):
+def modif_post(request, post_id):
     """Modification d'un post"""
 
     form = FormEcrirePost(request.POST or None)
     if form.is_valid():
-        post_a_modifier = get_object_or_404(Post, post__id=post_id)
+        post_a_modifier = get_object_or_404(Post, id=post_id)
         post_a_modifier = form.save()
         post_a_modifier.save()
 
-    return render(request, 'post.html', post_a_modifier)
+    return render(request, 'edit_post.html', locals())
 
 def posts(request):
     posts = Post.objects.all()
